@@ -19,13 +19,13 @@ services:
     depends_on:
     - redis
     - catalogue
-  # shipping:
-  #   build: ./shipping
-  #   image: joindevops/shipping:1.0.0
-  #   container_name: shipping
-  #   depends_on:
-  #   - mysql
-  #   - cart
+  shipping:
+    build: ./shipping
+    image: joindevops/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+    - mysql
+    - cart
   frontend:
     build: ./frontend
     image: joindevops/frontend:1.0.0
@@ -36,6 +36,7 @@ services:
     - catalogue
     - user
     - cart
+    - shipping
   mongodb:
     build: ./mongodb
     image: joindevops/mongodb:1.0.0
@@ -47,7 +48,7 @@ services:
     build: ./mysql
     image: joindevops/mysql:1.0.0
     container_name: mysql
-    
+
 networks:
   default:
     driver: bridge
